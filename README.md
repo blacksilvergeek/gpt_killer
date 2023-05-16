@@ -36,7 +36,7 @@ classification原理：对于一个未知文本，首先计算WAN，与已知作
 
 but for data only 211
 
-![image-20230517001654111](README.assets/image-20230517001654111.png)
+![](https://hackmd.io/_uploads/H1sz_F-S3.png)
 
 
 
