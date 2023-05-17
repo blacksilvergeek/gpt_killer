@@ -20,7 +20,7 @@ https://github.com/lrnzgiusti/Autoencoder-Aided-Graph-Convolutional-Neural-Netwo
 
 
 
-
+https://www.scielo.org.mx/scielo.php?pid=S1405-55462017000400581&script=sci_arttext_plus&tlng=en
 
 
 
