@@ -15,7 +15,8 @@ WAN 工作原理
 
 classification原理：对于一个未知文本，首先计算WAN，与已知作者比较，找出最相似的那个
 
-
+这个好像比较新
+https://github.com/lrnzgiusti/Autoencoder-Aided-Graph-Convolutional-Neural-Network
 
 
 
