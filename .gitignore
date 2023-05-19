@@ -1,0 +1,3 @@
+# 忽略 API 密钥文件
+api_key.txt
+api_key.json

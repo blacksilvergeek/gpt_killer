@@ -20,6 +20,20 @@ https://github.com/lrnzgiusti/Autoencoder-Aided-Graph-Convolutional-Neural-Netwo
 
 
 
+莫名其妙，这个是被upenn删了吗，为什么找不到他的主页
+
+https://fling.seas.upenn.edu/∼maeisen/wiki/index.php?n=Main.TextAttribution2
+
+
+
+
+
+https://alliance.seas.upenn.edu/~aribeiro/wiki/
+
+
+
+
+
 https://www.scielo.org.mx/scielo.php?pid=S1405-55462017000400581&script=sci_arttext_plus&tlng=en
 
 
