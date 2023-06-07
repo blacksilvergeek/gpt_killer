@@ -1,5 +1,21 @@
 # gpt_killer
 
+
+## semantic analysis
+
+修改node value为LSTM得到的
+## baseline
+
+WAN 已经有了
+
+
+
+
+
+
+
+
+
 ## Proposal
 - papers given document description
 
