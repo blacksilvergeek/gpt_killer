@@ -35,6 +35,9 @@
 import os
 import numpy as np
 import matplotlib
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+os.chdir("..")
 matplotlib.rcParams['text.usetex'] = True
 matplotlib.rcParams['font.family'] = 'serif'
 matplotlib.rcParams['text.latex.preamble']=[r'\usepackage{amsmath}']
@@ -46,6 +49,9 @@ from copy import deepcopy
 import torch; torch.set_default_dtype(torch.float64)
 import torch.nn as nn
 import torch.optim as optim
+
+
+
 
 #\\\ Own libraries:
 import alegnn.utils.graphTools as graphTools
