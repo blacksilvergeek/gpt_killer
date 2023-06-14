@@ -1,6 +1,33 @@
 # gpt_killer
 
 
+
+## Meeting 6/14
+
+1. very high accuracy？？？？why？？？
+   1. 处理
+2. other titles as test （其他题材作为测试）
+
+
+
+current work 勇胜
+
+- data done
+- GCN 已经有不错的结果
+
+future 张涵
+
+- SVM
+- 数据集的扩展
+
+困难 孙映雪
+
+- interpretability / explainability 需要解释什么？
+
+- 这么高的精度要怎么处理
+
+  
+
 ## semantic analysis
 
 修改node value为LSTM得到的
