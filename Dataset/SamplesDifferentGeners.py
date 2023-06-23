@@ -158,6 +158,30 @@ with open('api_key.json') as f:
 import openai
 # Set up the OpenAI API client
 openai.api_key = api_key
+def excerpts_title(author,title,model= "gpt-3.5-turbo"):
+    word_count = np.random.randint(50,1000)
+    message = f"Create a section around{word_count} of text given the title {title},in style of {author} \
+    the writing style and gener should following original style,\
+    the theme should be any kinds of themes have been written by that novelist,\
+        notice that the paragraph can imitate any section of original work"
+    messages=[{"role": "user", "content": message}] # choose topic, geners and author in different era, randomness here
+    # we can also command chatgpt generate paper in the easiest way, see data_gen
+    temperature = np.random.uniform(0,1)
+
+    # Generate a response
+    completion = openai.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        max_tokens=1024,
+        n=2,
+        stop=None,
+        temperature=temperature,
+    )
+
+    response = completion.choices[0].message.content
+
+    return response,author,title
+    
 def excerpts_generator(authors_by_era,word_count,literary_genres,historical_eras,essay_topics_by_era, model= "gpt-3.5-turbo"):
     #???? not sure, but if too many messages, maybe use acreate
     ### ??? find some bugs, chatgpt did not imitate them
@@ -171,7 +195,9 @@ def excerpts_generator(authors_by_era,word_count,literary_genres,historical_eras
     word_count = np.random.randint(500,1000)
     message = f"Create a {gener} in the topic {topic},in style of {author} use about {word_count} words,\
     the theme should be any kinds of themes have been written by that novelist"
-    messages=[{"role": "user", "content": message}]
+    messages=[{"role": "user", "content": message}] # choose topic, geners and author in different era, randomness here
+    # we can also command chatgpt generate paper in the easiest way, see data_gen
+    temperature = np.random.uniform(0.8,1)
 
     # Generate a response
     completion = openai.ChatCompletion.create(
@@ -180,21 +206,56 @@ def excerpts_generator(authors_by_era,word_count,literary_genres,historical_eras
         max_tokens=1024,
         n=2,
         stop=None,
-        temperature=0.5,
+        temperature=temperature,
     )
 
     response = completion.choices[0].message.content
 
-    return response,author,era,topic,gener,word_count
+    return response,author,era,topic,gener,word_count,temperature
 import json,time
-f = open('responses_3.json', 'a')
+import csv
+import threading
+def write_file(f,author,excerpts_title,title,model= "gpt-3.5-turbo"):
+    response,author,title =  excerpts_title(author,title)
+    print(response)
+    dictionary = {}
+    dictionary['author'] = author
+    dictionary['title'] = title
+    dictionary['content'] = response
+    json.dump(dictionary, f)
+    f.write('\n')
+    
+f = open('responses_title.json', 'a')
+texts = []
+count = 0
+
+with open("title_list.csv", "r", encoding="utf-8") as rf:
+    reader = csv.DictReader(rf)
+    for i in range(10):
+        for row in reader:
+            row = dict(row)
+            print(row)
+            author,title = row['author'],row['title_full']
+            try:
+                print(count)
+                write_file(f,author,excerpts_title,title)
+            except:
+                print("error")
+                texts.append((author,title))
+
+        
+        
+
+
+
+"""f = open('responses_5.json', 'a')
 for i in range(2000):
     print(i)
     
     try:
-        response,author,era,topic,gener,word_count = excerpts_generator(authors_by_era,500,literary_genres,historical_eras,essay_topics_by_era, model= "gpt-3.5-turbo")
-    #print(response)
-        json.dump({"author":author,"era":era,"gener":gener,"topic":topic,"content":response}, f)
+        response,author,era,topic,gener,word_count ,temperature= excerpts_generator(authors_by_era,500,literary_genres,historical_eras,essay_topics_by_era, model= "gpt-3.5-turbo")
+        #print(response)
+        json.dump({"author":author,"era":era,"gener":gener,"topic":topic,"randomness":temperature,"content":response}, f)
         f.write('\n')
         #responses.append(response)
     except:
@@ -205,3 +266,4 @@ for i in range(2000):
         
     print(i)
 f.close()
+"""
